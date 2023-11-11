@@ -12,7 +12,7 @@ int KeyReg2 = NORMAL_STATE;
 
 int KeyReg3 = NORMAL_STATE;
 
-int TimeOutForKeyPress =  200;
+int TimeOutForKeyPress =  100;
 int button1_flag = 0;
 
 int isButton1Pressed(){
@@ -24,8 +24,7 @@ int isButton1Pressed(){
 }
 
 void subKeyProcess(){
-	//TODO
-	HAL_GPIO_TogglePin(LED_RED_GPIO_Port, LED_RED_Pin);
+	//TO DO
 	button1_flag = 1;
 }
 
@@ -41,18 +40,14 @@ void getKeyInput(){
 
       if (KeyReg2 == PRESSED_STATE){
     	  //TODO
-        TimeOutForKeyPress = 200;
+        TimeOutForKeyPress = 100;
         subKeyProcess();
       }
     }else{
        TimeOutForKeyPress --;
         if (TimeOutForKeyPress == 0){
         	//TODO
-        	if (KeyReg2 == PRESSED_STATE){
-        	    	  //TODO
-        	        subKeyProcess();
-        	}
-        	TimeOutForKeyPress = 200;
+        	KeyReg3 = NORMAL_STATE;
         }
     }
   }
