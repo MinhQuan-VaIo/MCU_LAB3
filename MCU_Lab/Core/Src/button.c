@@ -1,56 +1,53 @@
-///*
-// * button.c
-// *
-// *  Created on: Nov 7, 2023
-// *      Author: Minhq
-// */
+/*
+ * button.c
+ *
+ *  Created on: Nov 14, 2023
+ *      Author: Minhq
+ */
 #include "button.h"
+static GPIO_PinState keyReg1[NUMBER_OF_BUTTON];
+static GPIO_PinState keyReg2[NUMBER_OF_BUTTON];
+static GPIO_PinState keyReg3[NUMBER_OF_BUTTON];
+static GPIO_PinState Pin_buffer[NUMBER_OF_BUTTON];
 
-int KeyReg0 = NORMAL_STATE;
-int KeyReg1 = NORMAL_STATE;
-int KeyReg2 = NORMAL_STATE;
+static int button_flag[NUMBER_OF_BUTTON];
+static int counter[NUMBER_OF_BUTTON];
 
-int KeyReg3 = NORMAL_STATE;
+uint16_t Pin_number[NUMBER_OF_BUTTON] = {MODE_Pin, ADD_Pin, CONFIRM_Pin};
 
-int TimeOutForKeyPress =  100;
-int button1_flag = 0;
-
-int isButton1Pressed(){
-	if(button1_flag == 1){
-		button1_flag = 0;
+int isButtonPressed(int index){
+	if(button_flag[index] == 1){
+		button_flag[index] = 0;
 		return 1;
 	}
 	return 0;
 }
 
-void subKeyProcess(){
-	//TO DO
-	button1_flag = 1;
-}
-
 void getKeyInput(){
-  KeyReg0 = KeyReg1;
-  KeyReg1 = KeyReg2;
-  //Add your button here
-  KeyReg2 = HAL_GPIO_ReadPin(Button1_GPIO_Port, Button1_Pin);
+	for(int i = 0; i < NUMBER_OF_BUTTON; i++){
+		keyReg1[i] = keyReg2[i];
+		keyReg2[i] = Pin_buffer[i];
+		Pin_buffer[i] = HAL_GPIO_ReadPin(GPIOA, Pin_number[i]);
 
-  if ((KeyReg0 == KeyReg1) && (KeyReg1 == KeyReg2)){
-    if (KeyReg3 != KeyReg2){
-      KeyReg3 = KeyReg2;
+		if((keyReg1[i] == keyReg2[i]) && (keyReg2[i] == Pin_buffer[i])){
+			if(keyReg3[i] != Pin_buffer[i]){
+				keyReg3[i] = Pin_buffer[i];
+				if(Pin_buffer[i] == PRESSED_STATE){
+					//TO DO
+					button_flag[i] = 1;
+					counter[i] = 0;
+				}
+			}else{
+				counter[i]++;
+				if(counter[i] == TimeOutForKey){
+					//TO DO
+					keyReg3[i] = NORMAL_STATE;
+				}
 
-      if (KeyReg2 == PRESSED_STATE){
-    	  //TODO
-        TimeOutForKeyPress = 100;
-        subKeyProcess();
-      }
-    }else{
-       TimeOutForKeyPress --;
-        if (TimeOutForKeyPress == 0){
-        	//TODO
-        	KeyReg3 = NORMAL_STATE;
-        }
-    }
-  }
+			}
+		}
+	}
 }
+
 
 

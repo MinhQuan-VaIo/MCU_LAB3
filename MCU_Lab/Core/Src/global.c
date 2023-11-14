@@ -1,9 +1,10 @@
 /*
  * global.c
  *
- *  Created on: Nov 11, 2023
+ *  Created on: Nov 14, 2023
  *      Author: Minhq
  */
-#include "global.h"
+int road1 = 0;
+int road2 = 0;
 int status = 0;
 
