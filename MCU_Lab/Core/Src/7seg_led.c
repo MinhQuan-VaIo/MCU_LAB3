@@ -7,10 +7,21 @@
 #include "main.h"
 #include "7seg_led.h"
 #include "global.h"
-int led_buffer [4] = {0};
+int led_index = 0;
+int led_buffer [4];
+int scan_timer = 25000;
+void scan_seg_led(){
+	update_buffer();
+	if(timer2_flag == 0){
+		update7SEG(led_index++);
+		if(led_index > 3) led_index = 0;
+		setTimer2(scan_timer);
+	}
+}
 void update_buffer() {
 	led_buffer[0] = road1 / 10;
 	led_buffer[1] = road1 % 10;
+
 	led_buffer[2] = road2 / 10;
 	led_buffer[3] = road2 % 10;
 }

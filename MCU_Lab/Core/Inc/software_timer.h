@@ -8,14 +8,12 @@
 #ifndef INC_SOFTWARE_TIMER_H_
 #define INC_SOFTWARE_TIMER_H_
 
-#define	DURATION_1S					1000
-#define DURATION_HALF_OF_SECOND 	500
 extern int timer1_flag;
 extern int timer2_flag;
 extern int timer3_flag;
 extern int timer4_flag;
 extern int timer5_flag;
-extern int TIMER_CYCLE;
+#define TIMER_CYCLE 10
 
 extern int timer0_mode_debounce_flag;
 extern int timer0_mode_debounce_counter;

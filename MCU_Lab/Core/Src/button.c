@@ -11,13 +11,17 @@ static GPIO_PinState keyReg3[NUMBER_OF_BUTTON];
 static GPIO_PinState Pin_buffer[NUMBER_OF_BUTTON];
 
 static int button_flag[NUMBER_OF_BUTTON];
-static int counter[NUMBER_OF_BUTTON];
 
 uint16_t Pin_number[NUMBER_OF_BUTTON] = {MODE_Pin, ADD_Pin, CONFIRM_Pin};
 
+void reset_all_flag(){
+	for(int i = 0; i < NUMBER_OF_BUTTON; i++){
+		button_flag[i] = 0;
+	}
+}
 int isButtonPressed(int index){
 	if(button_flag[index] == 1){
-		button_flag[index] = 0;
+		reset_all_flag();
 		return 1;
 	}
 	return 0;
@@ -35,15 +39,7 @@ void getKeyInput(){
 				if(Pin_buffer[i] == PRESSED_STATE){
 					//TO DO
 					button_flag[i] = 1;
-					counter[i] = 0;
 				}
-			}else{
-				counter[i]++;
-				if(counter[i] == TimeOutForKey){
-					//TO DO
-					keyReg3[i] = NORMAL_STATE;
-				}
-
 			}
 		}
 	}

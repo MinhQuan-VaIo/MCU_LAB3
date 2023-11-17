@@ -9,5 +9,5 @@
 #define INC_FSM_PROCESS_H_
 #include "global.h"
 
-
+void fsm_function();
 #endif /* INC_FSM_PROCESS_H_ */
