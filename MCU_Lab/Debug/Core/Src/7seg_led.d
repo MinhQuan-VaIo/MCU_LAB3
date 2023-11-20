@@ -25,7 +25,7 @@ Core/Src/7seg_led.o: ../Core/Src/7seg_led.c ../Core/Inc/main.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h \
  ../Core/Inc/7seg_led.h ../Core/Inc/main.h ../Core/Inc/global.h \
  ../Core/Inc/7seg_led.h ../Core/Inc/software_timer.h ../Core/Inc/button.h \
- ../Core/Inc/fsm_process.h ../Core/Inc/global.h
+ ../Core/Inc/fsm_process.h ../Core/Inc/global.h ../Core/Inc/fsm_mode.h
 
 ../Core/Inc/main.h:
 
@@ -92,3 +92,5 @@ Core/Src/7seg_led.o: ../Core/Src/7seg_led.c ../Core/Inc/main.h \
 ../Core/Inc/fsm_process.h:
 
 ../Core/Inc/global.h:
+
+../Core/Inc/fsm_mode.h:

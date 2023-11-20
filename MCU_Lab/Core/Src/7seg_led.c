@@ -9,10 +9,10 @@
 #include "global.h"
 int led_index = 0;
 int led_buffer [4];
-int scan_timer = 25000;
+int scan_timer = 250;
 void scan_seg_led(){
 	update_buffer();
-	if(timer2_flag == 0){
+	if(timer2_flag == 1){
 		update7SEG(led_index++);
 		if(led_index > 3) led_index = 0;
 		setTimer2(scan_timer);

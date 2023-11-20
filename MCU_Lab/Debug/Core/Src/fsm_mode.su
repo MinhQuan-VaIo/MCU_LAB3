@@ -1,1 +1,4 @@
-fsm_mode.c:9:6:fsm_manual_func	8	static
+fsm_mode.c:10:6:blinky_red	8	static
+fsm_mode.c:16:6:blinky_amber	8	static
+fsm_mode.c:22:6:blinky_green	8	static
+fsm_mode.c:28:6:fsm_manual_func	8	static

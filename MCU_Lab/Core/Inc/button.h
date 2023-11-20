@@ -16,4 +16,5 @@
 
 void reset_all_flag();
 void getKeyInput();
+int isButtonPressed();
 #endif /* INC_BUTTON_H_ */

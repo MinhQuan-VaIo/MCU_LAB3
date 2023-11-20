@@ -98,10 +98,11 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  status = INIT;
+
   while (1)
   {
 	  	 fsm_function();
+	  	 fsm_manual_func();
   }
   /* USER CODE END 3 */
 }
@@ -180,7 +181,7 @@ static void MX_TIM2_Init(void)
     Error_Handler();
   }
   /* USER CODE BEGIN TIM2_Init 2 */
-  //TIMER_CYCLE = ((1+(float)htim2.Init.Prescaler)*(1+(float)htim2.Init.Period) / 8000000)* 1000;
+  TIMER_CYCLE = ((1+(float)htim2.Init.Prescaler)*(1+(float)htim2.Init.Period) / 8000000)* 1000;
   /* USER CODE END TIM2_Init 2 */
 
 }

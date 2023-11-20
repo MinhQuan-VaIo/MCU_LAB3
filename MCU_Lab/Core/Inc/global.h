@@ -12,7 +12,7 @@
 #include "software_timer.h"
 #include "button.h"
 #include "fsm_process.h"
-
+#include "fsm_mode.h"
 extern int road1;
 extern int road2;
 extern int status;

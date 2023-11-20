@@ -13,7 +13,7 @@ extern int timer2_flag;
 extern int timer3_flag;
 extern int timer4_flag;
 extern int timer5_flag;
-#define TIMER_CYCLE 10
+extern int TIMER_CYCLE;
 
 extern int timer0_mode_debounce_flag;
 extern int timer0_mode_debounce_counter;
